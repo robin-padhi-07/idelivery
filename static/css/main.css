@@ -21,6 +21,24 @@ body {
     position: relative;
     font-family: 'Montserrat', sans-serif;
 }
+.error_msg_box {
+    float: left;
+    width: 100%;
+    color: #d50000;
+    font-size: 14px;
+    text-transform: capitalize;
+    transition: all 300ms ease-out;
+}
+.success_msg_box {
+  
+    float: left;
+    width: 100%;
+    color: #08a06f;
+    font-size: 14px;
+    text-transform: capitalize;
+    transition: all 300ms ease-out;
+ 
+}
 .common_container {
     float: left;
     width: 100%;
@@ -31,7 +49,6 @@ body {
     padding: 15px 0 15px;
     box-shadow: 0px 0px 4px 3px #f0f0f0;
 }
-
 
 .right_sidebar {
     float: left;

@@ -413,12 +413,13 @@ function getDaDetails()
 
 
 
+
 function getOrderItemComponent()
 {
 
 
   var html_content = '<li>';
-  html_content += '<div class="form-group col-md-5 pl_0 float-left">';
+  html_content += '<div class="form-group col-md-8 pl_0 float-left">';
   html_content += '<label for="exampleInputEmail1">1. Items name / product name (ಉತ್ಪನ್ನದ ಹೆಸರು)</label>';
   html_content += '<input type="text" class="form-control" id="item_name" name="item_name" placeholder="Write down the requirment">';
   html_content += '</div>';

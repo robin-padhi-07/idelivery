@@ -35,7 +35,7 @@
           {% for user in users %}
             <tr>
 
-              <td><img width="30" height="30" src="{{ user.user_profile.profile_pic.url }}" alt="avatar" class="profile-pic"></td>
+              <td><img width="40" height="40" src="{{ user.user_profile.profile_pic.url }}" alt="avatar" class="profile-pic"></td>
               <td>{{ user.user_profile.ref_id }}</td>
               <td>{{ user.user_meta.username }}</td>
               <td>{{ user.user_profile.location_area }}</td>
@@ -163,7 +163,7 @@
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Profile pic</label>
-              <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="profile_pic_v" id="profile_pic_v" />
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="profile_pic_v" id="profile_pic_v" />
             <input type="file" class="form-control" name="profile_pic" id="profile_pic" placeholder="profile_pic">
 
           </div>
@@ -171,14 +171,14 @@
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Driving Liscence</label>
-              <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic_v" id="driving_liscence_pic_v" />
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic_v" id="driving_liscence_pic_v" />
             <input type="file" class="form-control" name="driving_liscence_pic" id="driving_liscence_pic" placeholder="Driving Liscence">
 
           </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">PAN Card</label>
-              <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="pan_card_pic_v" id="pan_card_pic_v" />
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="pan_card_pic_v" id="pan_card_pic_v" />
             <input type="file" class="form-control" name="pan_card_pic" id="pan_card_pic" placeholder="PAN Card">
           </div>
 
@@ -187,11 +187,12 @@
             <label for="exampleInputEmail1">Rc</label>
             <input type="file" class="form-control" name="rc_pic" id="rc_pic" placeholder="Rc">
           </div>
+          <span id="error_el" class="error_msg_box"></span>
+              <span id="success_el" class="success_msg_box"></span>
 
+          <!-- <h1 id="error_el" class="header_title float-left mb_20 w-100"></h1>
 
-          <h1 id="error_el" class="header_title float-left mb_20 w-100"></h1>
-
-          <h1 id="success_el" class="header_title float-left mb_20 w-100"></h1>
+          <h1 id="success_el" class="header_title float-left mb_20 w-100"></h1> -->
         </form>
 
 
@@ -296,25 +297,28 @@
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Profile pic</label>
-             <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="profile_pic" id="profile_pic_v_v" />
+            <div class="acpect_box">
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="profile_pic" id="profile_pic_v_v" />
+            </div>
+             
           </div>
 
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Driving Liscence</label>
-            <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic" id="driving_liscence_pic_v_v" />
+            <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic" id="driving_liscence_pic_v_v" />
           </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">PAN Card</label>
             <!-- pan_card_pic_v -->
-            <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="pan_card_pic" id="pan_card_pic_v_v" />
+            <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="pan_card_pic" id="pan_card_pic_v_v" />
           </div>
 
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Rc</label>
-            <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="rc_pic" id="rc_pic_v_v"/>
+            <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="rc_pic" id="rc_pic_v_v"/>
 
           </div>
 
