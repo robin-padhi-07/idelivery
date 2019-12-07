@@ -25,8 +25,80 @@ import re
 # from itertools import izip
 
 
+def change_user_status(request):
+
+    print("came changestat")
+    username = request.POST['username']
+    user_status = request.POST['user_status']
+
+    user_obj = User.objects.get(username=username)
+    user_profile = UserProfileInfo.objects.get(user=user_obj)
+
+    # user_profile = UserProfileInfo.objects.get(username=username)
+
+    if user_status == "AT":
+        print("useractive")
+        user_status = dbconstants.USER_STATUS_DISABLED
+    else:
+        user_status = dbconstants.USER_STATUS_ACTIVE
+        print("userinactive")
+    user_profile.user_status = user_status
+    user_profile.save()
+
+    return HttpResponse(json.dumps({"SUCCESS":True, "RESPONSE_MESSAGE":"Status updated"}),
+    content_type="application/json")
+
+
+
+
+
 def customer_list(request):
-    return render(request, 'base_app/customers.html',context = {})
+
+    user_list = UserProfileInfo.objects.prefetch_related('user').filter(user_type = dbconstants.USER_TYPE_CONSUMER).order_by('-created_at')
+    # user_list = User.objects.all().select_related('user_profile_info')
+
+    # user_profile_list.
+
+    user_list_final = []
+
+
+
+
+    for user_temp in user_list:
+        # print("caddd")
+        user_meta_raw = User.objects.get(username=user_temp.user)
+        # print(user_meta_raw.username)
+        user_meta = {}
+        user_meta['username'] = user_meta_raw.username
+        #
+        #
+        # user_temp['profile_pic_absolute'] =  appendServerPath(user_temp['profile_pic'])
+        # user_temp.profile_pic("aa","aa")
+        # pic = user_temp.profile_pic
+        # print(pic)
+        user_parent_set = {}
+        # user_parent_set['profile_pic'] = appendServerPath(user_temp.profile_pic)
+        user_parent_set['user_meta'] = user_meta
+        user_parent_set['user_profile'] = user_temp
+        #
+        user_list_final.append(user_parent_set)
+
+    serialized_obj = serializers.serialize('json', user_list)
+
+    print("sizeb:"+ str(user_list.count()))
+
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(user_list_final, 9)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+    return render(request, 'base_app/customers.html',  {'state_list':dbconstants.STATE_LIST_DICT, 'users': users})
+
 
 def index(request):
 
@@ -439,8 +511,13 @@ def order_create(request):
             else:
                 print("came count 1")
                 profile = profile_check[0]
-                user = User.objects.get(username = profile.user)
-                profile.user = user
+                if(profile.user_status == dbconstants.USER_STATUS_ACTIVE):
+                    user = User.objects.get(username = profile.user)
+                    profile.user = user
+                else:
+                    return HttpResponse(json.dumps({"SUCCESS":False, "RESPONSE_MESSAGE":"ERRORS", "ERRORS":"This user is disabled"}),
+                    content_type="application/json")
+
 
 
             profile.phone_primary = post_data["phone_primary"]
