@@ -94,7 +94,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h1 id="demo" class="font_14 bold">Agent Registration</h1>
+        <h1 class="primary_title float-left mb_10 w-100">Primary Information  / ಪ್ರಾಥಮಿಕ ಮಾಹಿತಿ </h1>
         <form   action="/register/" method="POST" name="register_agent_form" id="register_agent_form">
           {% csrf_token %}
 
@@ -130,38 +130,41 @@
           </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Area</label>
-            <input type="text" class="form-control" name="location_area" id="location_area"  placeholder="Area">
+            <label for="exampleInputEmail1">Delivery Area (Locality) </label>
+            <input type="text" class="form-control" name="location_area" id="location_area"  placeholder="Avilable for Delivery">
           </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Address line 1</label>
-            <input type="text" class="form-control" name="location_sublocality" id="location_sublocality"  placeholder="Address line 1">
+          <div class="col-md-12 no-padding float-left">
+            <h1 class="primary_title float-left mb_10 w-100">Permanent Address / ಶಾಶ್ವತ ವಿಳಾಸ</h1>
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">Address line 1</label>
+              <input type="text" class="form-control" name="location_sublocality" id="location_sublocality"  placeholder="Address line 1">
+            </div>
+  
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">Address line 2</label>
+              <input type="text" class="form-control" name="location_locality" id="location_locality" placeholder="Address line 2">
+            </div>
+  
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">City</label>
+              <input type="text" class="form-control" name="location_city" id="location_city"  placeholder="City">
+            </div>
+  
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">Pincode</label>
+              <input type="number" max_length="6" class="form-control" name="location_pincode" id="location_pincode"  placeholder="Pincode">
+            </div>
+  
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">State</label>
+              <select class="form-control" id="location_state" name="location_state">
+                {% for key, value in state_list.items %}
+                <option value="{{key}}"> {{value}} </option>
+                {% endfor %}
+              </select>
+            </div>
           </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Address line 2</label>
-            <input type="text" class="form-control" name="location_locality" id="location_locality" placeholder="Address line 2">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">City</label>
-            <input type="text" class="form-control" name="location_city" id="location_city"  placeholder="City">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Pincode</label>
-            <input type="number" max_length="6" class="form-control" name="location_pincode" id="location_pincode"  placeholder="Pincode">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">State</label>
-          <select class="form-control" id="location_state" name="location_state">
-            {% for key, value in state_list.items %}
-            <option value="{{key}}"> {{value}} </option>
-            {% endfor %}
-          </select>
-          </div>
+          
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Profile pic</label>

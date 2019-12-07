@@ -245,6 +245,7 @@ $.ajax({
              return obj_state;
            });
 
+           
 // http://127.0.0.1:8000/media/
 
              $("#location_state"+id_suffix).val(state_key_val)
