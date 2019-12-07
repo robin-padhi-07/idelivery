@@ -99,7 +99,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h1 id="demo" class="font_14 bold">Agent Registration</h1>
+        <h1 class="primary_title float-left mb_10 w-100">Primary Information  / ಪ್ರಾಥಮಿಕ ಮಾಹಿತಿ </h1>
         <form   action="/register/" method="POST" name="register_agent_form" id="register_agent_form">
           {% csrf_token %}
 
@@ -135,42 +135,45 @@
           </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Area</label>
-            <input type="text" class="form-control" name="location_area" id="location_area"  placeholder="Area">
+            <label for="exampleInputEmail1">Delivery Area (Locality) </label>
+            <input type="text" class="form-control" name="location_area" id="location_area"  placeholder="Avilable for Delivery">
+          </div>
+          <div class="col-md-12 no-padding float-left">
+            <h1 class="primary_title float-left mb_10 w-100">Permanent Address / ಶಾಶ್ವತ ವಿಳಾಸ</h1>
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">Address line 1</label>
+              <input type="text" class="form-control" name="location_sublocality" id="location_sublocality"  placeholder="Address line 1">
+            </div>
+
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">Address line 2</label>
+              <input type="text" class="form-control" name="location_locality" id="location_locality" placeholder="Address line 2">
+            </div>
+
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">City</label>
+              <input type="text" class="form-control" name="location_city" id="location_city"  placeholder="City">
+            </div>
+
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">Pincode</label>
+              <input type="number" max_length="6" class="form-control" name="location_pincode" id="location_pincode"  placeholder="Pincode">
+            </div>
+
+            <div class="form-group col-md-3 pl_0 float-left">
+              <label for="exampleInputEmail1">State</label>
+              <select class="form-control" id="location_state" name="location_state">
+                {% for key, value in state_list.items %}
+                <option value="{{key}}"> {{value}} </option>
+                {% endfor %}
+              </select>
+            </div>
           </div>
 
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Address line 1</label>
-            <input type="text" class="form-control" name="location_sublocality" id="location_sublocality"  placeholder="Address line 1">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Address line 2</label>
-            <input type="text" class="form-control" name="location_locality" id="location_locality" placeholder="Address line 2">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">City</label>
-            <input type="text" class="form-control" name="location_city" id="location_city"  placeholder="City">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">Pincode</label>
-            <input type="number" max_length="6" class="form-control" name="location_pincode" id="location_pincode"  placeholder="Pincode">
-          </div>
-
-          <div class="form-group col-md-3 pl_0 float-left">
-            <label for="exampleInputEmail1">State</label>
-          <select class="form-control" id="location_state" name="location_state">
-            {% for key, value in state_list.items %}
-            <option value="{{key}}"> {{value}} </option>
-            {% endfor %}
-          </select>
-          </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Profile pic</label>
-              <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="profile_pic_v" id="profile_pic_v" />
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="profile_pic_v" id="profile_pic_v" />
             <input type="file" class="form-control" name="profile_pic" id="profile_pic" placeholder="profile_pic">
 
           </div>
@@ -178,14 +181,14 @@
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Driving Liscence</label>
-              <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic_v" id="driving_liscence_pic_v" />
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic_v" id="driving_liscence_pic_v" />
             <input type="file" class="form-control" name="driving_liscence_pic" id="driving_liscence_pic" placeholder="Driving Liscence">
 
           </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">PAN Card</label>
-              <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="pan_card_pic_v" id="pan_card_pic_v" />
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="pan_card_pic_v" id="pan_card_pic_v" />
             <input type="file" class="form-control" name="pan_card_pic" id="pan_card_pic" placeholder="PAN Card">
           </div>
 
@@ -194,11 +197,12 @@
             <label for="exampleInputEmail1">Rc</label>
             <input type="file" class="form-control" name="rc_pic" id="rc_pic" placeholder="Rc">
           </div>
+          <span id="error_el" class="error_msg_box"></span>
+              <span id="success_el" class="success_msg_box"></span>
 
+          <!-- <h1 id="error_el" class="header_title float-left mb_20 w-100"></h1>
 
-          <h1 id="error_el" class="header_title float-left mb_20 w-100"></h1>
-
-          <h1 id="success_el" class="header_title float-left mb_20 w-100"></h1>
+          <h1 id="success_el" class="header_title float-left mb_20 w-100"></h1> -->
         </form>
 
 
@@ -302,25 +306,28 @@
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Profile pic</label>
-             <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="profile_pic" id="profile_pic_v_v" />
+            <div class="acpect_box">
+              <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="profile_pic" id="profile_pic_v_v" />
+            </div>
+
           </div>
 
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Driving Liscence</label>
-            <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic" id="driving_liscence_pic_v_v" />
+            <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="driving_liscence_pic" id="driving_liscence_pic_v_v" />
           </div>
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">PAN Card</label>
             <!-- pan_card_pic_v -->
-            <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="pan_card_pic" id="pan_card_pic_v_v" />
+            <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="pan_card_pic" id="pan_card_pic_v_v" />
           </div>
 
 
           <div class="form-group col-md-3 pl_0 float-left">
             <label for="exampleInputEmail1">Rc</label>
-            <img width="30" height="30" src="" alt="avatar" class="profile-pic" name="rc_pic" id="rc_pic_v_v"/>
+            <img width="40" height="40" src="" alt="avatar" class="profile-pic" name="rc_pic" id="rc_pic_v_v"/>
 
           </div>
 
