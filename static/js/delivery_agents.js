@@ -1,5 +1,53 @@
 
 
+function deActivateUser(username)
+{
+
+var csrftoken = getCookie('csrftoken');
+
+var url = $('#ul_user_status').val()
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           headers: {"X-CSRFToken": csrftoken},
+           data: {"username":username, "user_status":"AT"}, // serializes the form's elements.
+           success: function(data)
+           {
+             // alert(JSON.stringify(data))
+            // processResponse(data)
+
+           }
+         });
+
+
+
+}
+
+function activateUser(username)
+{
+
+
+  var csrftoken = getCookie('csrftoken');
+
+  var url = $('#ul_user_status').val()
+
+      $.ajax({
+             type: "POST",
+             url: url,
+             headers: {"X-CSRFToken": csrftoken},
+             data: {"username":username, "user_status":"UE"}, // serializes the form's elements.
+             success: function(data)
+             {
+               // alert(JSON.stringify(data))
+              // processResponse(data)
+
+             }
+           });
+
+
+}
+
 function proceedUserLogin()
 {
 
@@ -301,7 +349,7 @@ function createOrder()
              data: form.serialize(), // serializes the form's elements.
              success: function(data)
              {
-              processResponse(data)       
+              processResponse(data)
 
              }
            });

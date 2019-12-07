@@ -15,5 +15,6 @@ path('orders_list/',views.orders_list, name = "orders_list"),
 path('customer_list/',views.customer_list, name = "customer_list"),
 path('order_create/',views.order_create, name = "order_create"),
 path('get_da_details/',views.get_da_details, name = "get_da_details"),
+path('change_user_status/',views.change_user_status, name = "change_user_status"),
 
 ]
