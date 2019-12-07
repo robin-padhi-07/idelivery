@@ -36,7 +36,12 @@
           {% for user in users %}
             <tr>
 
-              <td><img width="30" height="30" src="{{ user.user_profile.profile_pic.url }}" alt="avatar" class="profile-pic"></td>
+              <td>
+                {% if user.user_profile.profile_pic %}
+                <img width="30" height="30" src="{{ user.user_profile.profile_pic.url }}" alt="avatar" class="profile-pic">
+                {% endif %}
+              </td>
+
               <td>{{ user.user_profile.ref_id }}</td>
               <td>{{ user.user_meta.username }}</td>
               <td>{{ user.user_profile.location_area }}</td>
