@@ -50,7 +50,11 @@
 
 <li>
   <div class="workers_box">
+      {% if user.user_profile.profile_pic %}
     <img src="{{ user.user_profile.profile_pic.url }}" >
+    {% else %}
+    <img src="" >
+    {% endif %}
     <div class="workers_caption">
       <span class="workers_name">{{ user.user_meta.username }}</span>
       <span class="workers_location">

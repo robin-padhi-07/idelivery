@@ -108,7 +108,7 @@ $.ajax({
       url: $("#da_fetch").val(),
       headers: {"X-CSRFToken": csrftoken},
       // url: "/get_da_details/",
-      data: {username:"Banu"}, // serializes the form's elements.
+      data: {username:username}, // serializes the form's elements.
       success: function(data)
       {
         $('#registerBoy').modal('toggle');
@@ -195,7 +195,7 @@ $.ajax({
       url: $("#da_fetch").val(),
       headers: {"X-CSRFToken": csrftoken},
       // url: "/get_da_details/",
-      data: {username:"Banu"}, // serializes the form's elements.
+      data: {username:username}, // serializes the form's elements.
       success: function(data)
       {
         $('#registerBoyView').modal('toggle');
@@ -245,7 +245,7 @@ $.ajax({
              return obj_state;
            });
 
-           
+
 // http://127.0.0.1:8000/media/
 
              $("#location_state"+id_suffix).val(state_key_val)
